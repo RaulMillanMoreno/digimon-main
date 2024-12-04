@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
 
-class Digimon {
+class Animal {
   final String name;
   String? imageUrl;
   String? apiname;
@@ -12,7 +12,7 @@ class Digimon {
 
   int rating = 10;
 
-  Digimon(this.name);
+  Animal(this.name);
 
   Future getImageUrl() async {
     if (imageUrl != null) {
@@ -23,8 +23,7 @@ class Digimon {
     try {
       apiname = name.toLowerCase();
 
-      var uri = Uri.https('api.animality.xyz', '/all/$apiname');
-      // var uri = Uri.https('digimon-api.vercel.app', '/api/digimon/name/$apiname');
+      var uri = Uri.https('api.animality.xyz', '/all/$apiname');//se cambio esto
       var request = await http.getUrl(uri);
       var response = await request.close();
       var responseBody = await response.transform(utf8.decoder).join();
@@ -32,9 +31,8 @@ class Digimon {
       var data = json.decode(responseBody);// se ha quitado lo de la lista y el [0] que tenia el data, porque lo que tenemos son diversos jason no listas.
       imageUrl = data["image"];
       levelDigimon = data["fact"];
-      //print(levelDigimon);
     } catch (exception) {
-      print(exception);
+      //print(exception);
     }
   }
 }

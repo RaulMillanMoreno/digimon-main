@@ -2,26 +2,26 @@ import 'package:digimon/digimon_model.dart';
 import 'package:flutter/material.dart';
 
 
-class AddDigimonFormPage extends StatefulWidget {
-  const AddDigimonFormPage({super.key});
+class AddAnimalFormPage extends StatefulWidget {
+  const AddAnimalFormPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _AddDigimonFormPageState createState() => _AddDigimonFormPageState();
+  _AddAnimalFormPageState createState() => _AddAnimalFormPageState();
 }
 
-class _AddDigimonFormPageState extends State<AddDigimonFormPage> {
+class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
   TextEditingController nameController = TextEditingController();
 
   void submitPup(BuildContext context) {
     if (nameController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         backgroundColor: Colors.redAccent,
-        content: Text('You forgot to insert the digimon name'),
+        content: Text('You forgot to insert the Animal name'),
       ));
     } else {
-      var newDigimon = Digimon(nameController.text);
-      Navigator.of(context).pop(newDigimon);
+      var newAnimal = Animal(nameController.text);
+      Navigator.of(context).pop(newAnimal);
     }
   }
 
@@ -29,7 +29,7 @@ class _AddDigimonFormPageState extends State<AddDigimonFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add a new digimon'),
+        title: const Text('Add a new animal'),
         backgroundColor: const Color(0xFF0B479E),
       ),
       body: Container(
@@ -44,7 +44,7 @@ class _AddDigimonFormPageState extends State<AddDigimonFormPage> {
                 style: const TextStyle(decoration: TextDecoration.none, color: Colors.black),// le he cambiado el color para que al escribir se ponga de color negro
                 onChanged: (v) => nameController.text = v,
                 decoration: const InputDecoration(
-                  labelText: 'Digimon Name',
+                  labelText: 'Animal Name',
                   labelStyle: TextStyle(color: Colors.black),
                 ),
               ),
@@ -55,7 +55,7 @@ class _AddDigimonFormPageState extends State<AddDigimonFormPage> {
                 builder: (context) {
                   return ElevatedButton(
                     onPressed: () => submitPup(context),
-                    child: const Text('Submit Digimon'),
+                    child: const Text('Submit Animal'),
                   );
                 },
               ),

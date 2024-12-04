@@ -4,7 +4,7 @@ import 'dart:async';
 
 
 class DigimonDetailPage extends StatefulWidget {
-  final Digimon digimon;
+  final Animal digimon;
   const DigimonDetailPage(this.digimon, {super.key});
 
   @override
@@ -80,7 +80,7 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
         });
   }
 
-    @override
+    @override// creo que se añadió esto.
   void initState() {
     super.initState();
     _sliderValue = widget.digimon.rating.toDouble();

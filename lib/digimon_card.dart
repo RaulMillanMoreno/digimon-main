@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 
 class DigimonCard extends StatefulWidget {
-  final Digimon digimon;
+  final Animal digimon;
 
   const DigimonCard(this.digimon, {super.key});
 
@@ -14,7 +14,7 @@ class DigimonCard extends StatefulWidget {
 }
 
 class _DigimonCardState extends State<DigimonCard> {
-  Digimon digimon;
+  Animal digimon;
   String? renderUrl;
 
   _DigimonCardState(this.digimon);

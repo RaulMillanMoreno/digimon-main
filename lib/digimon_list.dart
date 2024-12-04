@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'digimon_model.dart';
 
 class DigimonList extends StatelessWidget {
-  final List<Digimon> digimons;
+  final List<Animal> digimons;
   const DigimonList(this.digimons, {super.key});
 
   @override
