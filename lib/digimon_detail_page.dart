@@ -54,7 +54,7 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
   }
 
   void updateRating() {
-    if (_sliderValue < 5) {
+    if (_sliderValue < 4) {
       _ratingErrorDialog();
     } else {
       setState(() {
@@ -79,6 +79,13 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
           );
         });
   }
+
+    @override
+  void initState() {
+    super.initState();
+    _sliderValue = widget.digimon.rating.toDouble();
+  }
+
 
   Widget get submitRatingButton {
     return ElevatedButton(
@@ -131,7 +138,7 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
         children: <Widget>[
           digimonImage,
           Text(widget.digimon.name, style: const TextStyle(color: Colors.black, fontSize: 32.0)),
-          Text('${widget.digimon.levelDigimon}', style: const TextStyle(color: Colors.black, fontSize: 20.0)),
+          Text('${widget.digimon.levelDigimon}', style: const TextStyle(color: Colors.black, fontSize: 20.0), textAlign: TextAlign.center,),
           Padding(
             padding: const EdgeInsets.only(top: 20.0),
             child: rating,

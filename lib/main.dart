@@ -33,7 +33,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Digimon> initialDigimons = [Digimon('cat'), Digimon('dog'), Digimon('bird')];
-  // List<Digimon> initialDigimons = [Digimon('Gatomon'), Digimon('Gomamon'), Digimon('Leomon')];
   Future _showNewDigimonForm() async {//para que no pete al crear uno nuevo, ponemos el ? en el digimon y ponemos la inicializacion en un if para asegurar que siempre iniciara un animal real. si no peta
     Digimon? newDigimon = await Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
       return const AddDigimonFormPage();

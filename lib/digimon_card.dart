@@ -69,6 +69,7 @@ class _DigimonCardState extends State<DigimonCard> {
       });
     }
   }
+
   // Ya que 'rating' es parte de 'Digimon', cuando cambia, la vista debe actualizarse. Esto ya se maneja mediante 'setState' en el estado de 'DigimonCard'.
   Widget get digimonCard {
     return Positioned(
@@ -103,11 +104,17 @@ class _DigimonCardState extends State<DigimonCard> {
     );
   }
 
-  showDigimonDetailPage() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return DigimonDetailPage(digimon);
-    }));
+    void showDigimonDetailPage() {//esto se canvio para lo del push(para que se vea el numerito de las estrellas de forma correcta)
+    Navigator.of(context)
+        .push(
+            MaterialPageRoute(builder: (context) => DigimonDetailPage(digimon)))
+        .then((_) {
+      setState(() {
+        // Esto asegura que la tarjeta se reconstruya con los nuevos valores.
+      });
+    });
   }
+  
 
   @override
   Widget build(BuildContext context) {
