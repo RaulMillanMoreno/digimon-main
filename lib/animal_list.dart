@@ -1,6 +1,6 @@
-import 'package:digimon/digimon_card.dart';
+import 'package:digimon/animal_card.dart';
 import 'package:flutter/material.dart';
-import 'digimon_model.dart';
+import 'animal_model.dart';
 
 class AnimalList extends StatelessWidget {
   final List<Animal> animals;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'digimon_model.dart';
+import 'animal_model.dart';
 import 'dart:async';
 
 
@@ -120,7 +120,7 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
         const Icon(
           Icons.star,
           size: 40.0,
-          color: Colors.black,
+          color: Color.fromARGB(255, 255, 187, 0),
         ),
         Text('${widget.animal.rating}/10', style: const TextStyle(color: Colors.black, fontSize: 30.0))
       ],

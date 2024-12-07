@@ -1,5 +1,5 @@
-import 'package:digimon/digimon_model.dart';
-import 'digimon_detail_page.dart';
+import 'package:digimon/animal_model.dart';
+import 'animal_detail_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -70,7 +70,7 @@ class _AnimalCardState extends State<AnimalCard> {
     }
   }
 
-  // Ya que 'rating' es parte de 'Digimon', cuando cambia, la vista debe actualizarse. Esto ya se maneja mediante 'setState' en el estado de 'DigimonCard'.
+  // Ya que 'rating' es parte de 'Animal', cuando cambia, la vista debe actualizarse. Esto ya se maneja mediante 'setState' en el estado de 'AnimalCard'.
   Widget get animalCard {
     return Positioned(
       right: 0.0,

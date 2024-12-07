@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'digimon_model.dart';
-import 'digimon_list.dart';
-import 'new_digimon_form.dart';
+import 'animal_model.dart';
+import 'animal_list.dart';
+import 'new_animal_form.dart';
 
 
 void main() => runApp(const MyApp());
