@@ -53,9 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         backgroundColor: const Color(0xFF0B479E),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: _showNewAnimalForm,
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: _showNewAnimalForm,
+            ),
           ),
         ],
       ),
