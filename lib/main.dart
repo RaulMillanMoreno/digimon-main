@@ -32,14 +32,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Animal> initialDigimons = [Animal('cat'), Animal('dog'), Animal('bird')];
-  Future _showNewDigimonForm() async {//para que no pete al crear uno nuevo, ponemos el ? en el digimon y ponemos la inicializacion en un if para asegurar que siempre iniciara un animal real. si no peta
-    Animal? newDigimon = await Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+  List<Animal> initialAnimals = [Animal('cat'), Animal('dog'), Animal('bird')];
+  Future _showNewAnimalForm() async {//para que no pete al crear uno nuevo, ponemos el ? en el Animal y ponemos la inicializacion en un if para asegurar que siempre iniciara un animal real. si no peta
+    Animal? newAnimal = await Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
       return const AddAnimalFormPage();
     }));
-    //print(newDigimon);
-    if (newDigimon != null){
-      initialDigimons.add(newDigimon);
+    if (newAnimal != null){
+      initialAnimals.add(newAnimal);
       setState(() {});
     }    
   }
@@ -56,14 +55,14 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: _showNewDigimonForm,
+            onPressed: _showNewAnimalForm,
           ),
         ],
       ),
       body: Container(
           color: const Color.fromARGB(255, 0, 42, 90),
           child: Center(
-            child: DigimonList(initialDigimons),
+            child: AnimalList(initialAnimals),
           )),
     );
   }

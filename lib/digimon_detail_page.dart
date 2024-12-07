@@ -3,17 +3,17 @@ import 'digimon_model.dart';
 import 'dart:async';
 
 
-class DigimonDetailPage extends StatefulWidget {
-  final Animal digimon;
-  const DigimonDetailPage(this.digimon, {super.key});
+class AnimalDetailPage extends StatefulWidget {
+  final Animal animal;
+  const AnimalDetailPage(this.animal, {super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _DigimonDetailPageState createState() => _DigimonDetailPageState();
+  _AnimalDetailPageState createState() => _AnimalDetailPageState();
 }
 
-class _DigimonDetailPageState extends State<DigimonDetailPage> {
-  final double digimonAvarterSize = 150.0;
+class _AnimalDetailPageState extends State<AnimalDetailPage> {
+  final double animalAvarterSize = 150.0;
   double _sliderValue = 10.0;
 
   Widget get addYourRating {
@@ -58,7 +58,7 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
       _ratingErrorDialog();
     } else {
       setState(() {
-        widget.digimon.rating = _sliderValue.toInt();
+        widget.animal.rating = _sliderValue.toInt();
       });
     }
   }
@@ -83,7 +83,7 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
     @override// creo que se añadió esto.
   void initState() {
     super.initState();
-    _sliderValue = widget.digimon.rating.toDouble();
+    _sliderValue = widget.animal.rating.toDouble();
   }
 
 
@@ -94,12 +94,12 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
     );
   }
 
-  Widget get digimonImage {
+  Widget get animalImage {
     return Hero(
-      tag: widget.digimon,
+      tag: widget.animal,
       child: Container(
-        height: digimonAvarterSize,
-        width: digimonAvarterSize,
+        height: animalAvarterSize,
+        width: animalAvarterSize,
         constraints: const BoxConstraints(),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
@@ -108,7 +108,7 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
               BoxShadow(offset: Offset(2.0, 1.0), blurRadius: 3.0, spreadRadius: 0.0, color: Color(0x24000000)),
               BoxShadow(offset: Offset(3.0, 1.0), blurRadius: 4.0, spreadRadius: 2.0, color: Color(0x1f000000))
             ],
-            image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(widget.digimon.imageUrl ?? ""))),
+            image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(widget.animal.imageUrl ?? ""))),
       ),
     );
   }
@@ -122,12 +122,12 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
           size: 40.0,
           color: Colors.black,
         ),
-        Text('${widget.digimon.rating}/10', style: const TextStyle(color: Colors.black, fontSize: 30.0))
+        Text('${widget.animal.rating}/10', style: const TextStyle(color: Colors.black, fontSize: 30.0))
       ],
     );
   }
 
-  Widget get digimonProfile {
+  Widget get animalProfile {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 32.0),
       decoration: const BoxDecoration(
@@ -136,9 +136,9 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          digimonImage,
-          Text(widget.digimon.name, style: const TextStyle(color: Colors.black, fontSize: 32.0)),
-          Text('${widget.digimon.levelDigimon}', style: const TextStyle(color: Colors.black, fontSize: 20.0), textAlign: TextAlign.center,),
+          animalImage,
+          Text(widget.animal.name, style: const TextStyle(color: Colors.black, fontSize: 32.0)),
+          Text('${widget.animal.levelAnimal}', style: const TextStyle(color: Colors.black, fontSize: 20.0), textAlign: TextAlign.center,),
           Padding(
             padding: const EdgeInsets.only(top: 20.0),
             child: rating,
@@ -154,10 +154,10 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
       backgroundColor: const Color(0xFFABCAED),
       appBar: AppBar(
         backgroundColor: const Color(0xFF0B479E),
-        title: Text('Meet ${widget.digimon.name}'),
+        title: Text('Meet ${widget.animal.name}'),
       ),
       body: ListView(
-        children: <Widget>[digimonProfile, addYourRating],
+        children: <Widget>[animalProfile, addYourRating],
       ),
     );
   }

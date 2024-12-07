@@ -8,7 +8,7 @@ class Animal {
   final String name;
   String? imageUrl;
   String? apiname;
-  String? levelDigimon;
+  String? levelAnimal;
 
   int rating = 10;
 
@@ -30,7 +30,7 @@ class Animal {
 
       var data = json.decode(responseBody);// se ha quitado lo de la lista y el [0] que tenia el data, porque lo que tenemos son diversos jason no listas.
       imageUrl = data["image"];
-      levelDigimon = data["fact"];
+      levelAnimal = data["fact"];
     } catch (exception) {
       //print(exception);
     }

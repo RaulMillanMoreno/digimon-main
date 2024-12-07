@@ -3,31 +3,31 @@ import 'digimon_detail_page.dart';
 import 'package:flutter/material.dart';
 
 
-class DigimonCard extends StatefulWidget {
-  final Animal digimon;
+class AnimalCard extends StatefulWidget {
+  final Animal animal;
 
-  const DigimonCard(this.digimon, {super.key});
+  const AnimalCard(this.animal, {super.key});
 
   @override
   // ignore: library_private_types_in_public_api, no_logic_in_create_state
-  _DigimonCardState createState() => _DigimonCardState(digimon);
+  _AnimalCardState createState() => _AnimalCardState(animal);
 }
 
-class _DigimonCardState extends State<DigimonCard> {
-  Animal digimon;
+class _AnimalCardState extends State<AnimalCard> {
+  Animal animal;
   String? renderUrl;
 
-  _DigimonCardState(this.digimon);
+  _AnimalCardState(this.animal);
 
   @override
   void initState() {
     super.initState();
-    renderDigimonPic();
+    renderAnimalPic();
   }
 
-  Widget get digimonImage {
-    var digimonAvatar = Hero(
-      tag: digimon,
+  Widget get animalImage {
+    var animalAvatar = Hero(
+      tag: animal,
       child: Container(
         width: 100.0,
         height: 100.0,
@@ -45,14 +45,14 @@ class _DigimonCardState extends State<DigimonCard> {
               LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Colors.black54, Colors.black, Color.fromARGB(255, 84, 110, 122)])),
       alignment: Alignment.center,
       child: const Text(
-        'DIGI',
+        'ANIM',
         textAlign: TextAlign.center,
       ),
     );
 
     var crossFade = AnimatedCrossFade(
       firstChild: placeholder,
-      secondChild: digimonAvatar,
+      secondChild: animalAvatar,
       // ignore: unnecessary_null_comparison
       crossFadeState: renderUrl == null ? CrossFadeState.showFirst : CrossFadeState.showSecond,
       duration: const Duration(milliseconds: 1000),
@@ -61,17 +61,17 @@ class _DigimonCardState extends State<DigimonCard> {
     return crossFade;
   }
 
-  void renderDigimonPic() async {
-    await digimon.getImageUrl();
+  void renderAnimalPic() async {
+    await animal.getImageUrl();
     if (mounted) {
       setState(() {
-        renderUrl = digimon.imageUrl;
+        renderUrl = animal.imageUrl;
       });
     }
   }
 
   // Ya que 'rating' es parte de 'Digimon', cuando cambia, la vista debe actualizarse. Esto ya se maneja mediante 'setState' en el estado de 'DigimonCard'.
-  Widget get digimonCard {
+  Widget get animalCard {
     return Positioned(
       right: 0.0,
       child: SizedBox(
@@ -87,13 +87,13 @@ class _DigimonCardState extends State<DigimonCard> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Text(
-                  widget.digimon.name,
+                  widget.animal.name,
                   style: const TextStyle(color: Color(0xFF000600), fontSize: 27.0),
                 ),
                 Row(
                   children: <Widget>[
                     const Icon(Icons.star, color: Color.fromARGB(255, 255, 187, 0)),
-                    Text(': ${widget.digimon.rating}/10', style: const TextStyle(color: Color(0xFF000600), fontSize: 14.0))
+                    Text(': ${widget.animal.rating}/10', style: const TextStyle(color: Color(0xFF000600), fontSize: 14.0))
                   ],
                 )
               ],
@@ -104,10 +104,10 @@ class _DigimonCardState extends State<DigimonCard> {
     );
   }
 
-    void showDigimonDetailPage() {//esto se canvio para lo del push(para que se vea el numerito de las estrellas de forma correcta)
+    void showAnimalDetailPage() {//esto se canvio para lo del push(para que se vea el numerito de las estrellas de forma correcta)
     Navigator.of(context)
         .push(
-            MaterialPageRoute(builder: (context) => DigimonDetailPage(digimon)))
+            MaterialPageRoute(builder: (context) => AnimalDetailPage(animal)))
         .then((_) {
       setState(() {
         // Esto asegura que la tarjeta se reconstruya con los nuevos valores.
@@ -119,15 +119,15 @@ class _DigimonCardState extends State<DigimonCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => showDigimonDetailPage(),
+      onTap: () => showAnimalDetailPage(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: SizedBox(
           height: 115.0,
           child: Stack(
             children: <Widget>[
-              digimonCard,
-              Positioned(top: 7.5, child: digimonImage),
+              animalCard,
+              Positioned(top: 7.5, child: animalImage),
             ],
           ),
         ),
