@@ -59,11 +59,15 @@ class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add a new animal'),
-        backgroundColor: const Color(0xFF0B479E),
+        title: const Text('Add a new animal', style: const TextStyle(color: Colors.green)),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.green),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: Container(
-        color: const Color(0xFFABCAED),
+        color: const Color.fromARGB(255, 143, 157, 174),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
           child: Column(

@@ -49,21 +49,22 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: key,
       appBar: AppBar(
-        title: Text(widget.title, style: const TextStyle(color: Colors.white)),
+        title: Text(widget.title, style: const TextStyle(color: Colors.green)),
         centerTitle: true,
-        backgroundColor: const Color(0xFF0B479E),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: IconButton(
               icon: const Icon(Icons.add),
+              color: Colors.green,
               onPressed: _showNewAnimalForm,
             ),
           ),
         ],
       ),
       body: Container(
-          color: const Color.fromARGB(255, 0, 42, 90),
+          color: const Color.fromARGB(255, 143, 157, 174),
           child: Center(
             child: AnimalList(initialAnimals),
           )),

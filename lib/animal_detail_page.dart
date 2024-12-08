@@ -131,7 +131,7 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 32.0),
       decoration: const BoxDecoration(
-        color: Color(0xFFABCAED),
+        color: Color.fromARGB(255, 143, 157, 174),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -151,10 +151,14 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFABCAED),
+      backgroundColor: const Color.fromARGB(255, 143, 157, 174),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0B479E),
-        title: Text('Meet ${widget.animal.name}'),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        title: Text('Meet ${widget.animal.name}', style: const TextStyle(color: Colors.green)),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.green),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: ListView(
         children: <Widget>[animalProfile, addYourRating],
