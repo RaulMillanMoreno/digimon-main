@@ -14,7 +14,7 @@ class Animal {
 
   Animal(this.name);
 
-  Future getImageUrl() async {
+  Future getDataUrl() async {
     if (imageUrl != null) {
       return;
     }

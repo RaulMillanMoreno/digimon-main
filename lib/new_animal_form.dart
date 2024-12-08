@@ -15,7 +15,7 @@ class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
   Future<bool> isValidAnimal(String name) async {
     final animal = Animal(name);
     try {
-      await animal.getImageUrl(); // Llama al método para obtener los datos del animal
+      await animal.getDataUrl(); // Llama al método para obtener los datos del animal
       return animal.imageUrl != null; // Si `imageUrl` no es nulo, el animal existe
     } catch (e) {
       return false; // Si ocurre un error, asumimos que el animal no existe
@@ -39,7 +39,7 @@ class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
 
       if (isValid) {
         var newAnimal = Animal(name);
-        await newAnimal.getImageUrl(); // Llama a getImageUrl para cargar los datos del animal
+        await newAnimal.getDataUrl(); // Llama a getImageUrl para cargar los datos del animal
         Navigator.of(context).pop(newAnimal); // Devuelve el objeto completo
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
