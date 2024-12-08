@@ -10,23 +10,20 @@ class AddAnimalFormPage extends StatefulWidget {
 
 class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
   TextEditingController nameController = TextEditingController();
-
-  /// Función para validar si un animal existe usando `Animal.getImageUrl`
-  Future<bool> isValidAnimal(String name) async {
+  
+  Future<bool> isValidAnimal(String name) async {// Sirve para validar si un animal existe usando Animal.getImageUrl
     final animal = Animal(name);
     try {
-      await animal.getDataAPI(); // Llama al método para obtener los datos del animal
-      return animal.imageUrl != null; // Si `imageUrl` no es nulo, el animal existe
+      await animal.getDataAPI();  // Llama al método para obtener los datos del animal
+      return animal.imageUrl != null;  // Si imageUrl no es nulo, el animal existe
     } catch (e) {
-      return false; // Si ocurre un error, asumimos que el animal no existe
+      return false;  // Si ocurre un error, asumimos que el animal no existe
     }
   }
 
-  /// Función para enviar el formulario
-  void submitPup(BuildContext context) async {
+  void submitPup(BuildContext context) async {// Sirve para enviar el formulario
     final name = nameController.text;
-
-    if (name.isEmpty) {
+    if (name.isEmpty) {  // Si el campo está vacío
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         backgroundColor: Colors.redAccent,
         content: Text('You forgot to insert the Animal name'),
@@ -35,12 +32,12 @@ class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
     }
 
     try {
-      final isValid = await isValidAnimal(name);
+      final isValid = await isValidAnimal(name);  // Verifica si el animal es válido
 
       if (isValid) {
-        var newAnimal = Animal(name);
-        await newAnimal.getDataAPI(); // Llama a getImageUrl para cargar los datos del animal
-        Navigator.of(context).pop(newAnimal); // Devuelve el objeto completo
+        var newAnimal = Animal(name);  // Crea un nuevo objeto Animal
+        await newAnimal.getDataAPI();
+        Navigator.of(context).pop(newAnimal);// Devuelve el objeto Animal al anterior nivel de la navegación
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           backgroundColor: Colors.redAccent,
@@ -48,7 +45,7 @@ class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
         ));
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(// Muestra un mensaje de error si ocurre una excepción
         backgroundColor: Colors.redAccent,
         content: Text('Error checking the animal: $e'),
       ));
@@ -58,27 +55,27 @@ class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(  // Barra de navegación superior
         title: const Text('Add a new animal', style: const TextStyle(color: Colors.green)),
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        leading: IconButton(
+        leading: IconButton( // Botón para retroceder a la pantalla anterior
           icon: const Icon(Icons.arrow_back, color: Colors.green),
           onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Container(
         color: const Color.fromARGB(255, 143, 157, 174),
-        child: Padding(
+        child: Padding( 
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
           child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: TextField(
+                child: TextField(  // Es un campo de texto que sirve para ingresar el nombre del animal
                   controller: nameController,
                   style: const TextStyle(
-                      decoration: TextDecoration.none, color: Colors.black), // le he cambiado el color para que al escribir se ponga de color negro
-                  decoration: const InputDecoration(
+                      decoration: TextDecoration.none, color: Colors.black),
+                  decoration: const InputDecoration( 
                     labelText: 'Animal Name',
                     labelStyle: TextStyle(color: Colors.black),
                   ),
@@ -86,9 +83,9 @@ class _AddAnimalFormPageState extends State<AddAnimalFormPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Builder(
+                child: Builder( 
                   builder: (context) {
-                    return ElevatedButton(
+                    return ElevatedButton(  // Es un botón que sirve para enviar el formulario
                       onPressed: () => submitPup(context),
                       child: const Text('Submit Animal'),
                     );
