@@ -8,29 +8,24 @@ class Animal {
   final String name;
   String? imageUrl;
   String? apiname;
-  String? levelAnimal;
-
-  int rating = 10;
+  String? infoAnimal;
+  int rating = 10; // Calificación por defecto del animal.
 
   Animal(this.name);
-
-  Future getDataUrl() async {
+  Future getDataAPI() async { // Método que obtiene datos del animal desde la API.    
     if (imageUrl != null) {
       return;
     }
-
-    HttpClient http = HttpClient();
+    HttpClient http = HttpClient(); // Cliente HTTP para realizar solicitudes.
     try {
       apiname = name.toLowerCase();
-
-      var uri = Uri.https('api.animality.xyz', '/all/$apiname');//se cambio esto
+      var uri = Uri.https('api.animality.xyz', '/all/$apiname'); // Construye la URI para realizar la solicitud a la API.      
       var request = await http.getUrl(uri);
       var response = await request.close();
-      var responseBody = await response.transform(utf8.decoder).join();
-
-      var data = json.decode(responseBody);// se ha quitado lo de la lista y el [0] que tenia el data, porque lo que tenemos son diversos jason no listas.
-      imageUrl = data["image"];
-      levelAnimal = data["fact"];
+      var responseBody = await response.transform(utf8.decoder).join(); 
+      var data = json.decode(responseBody);  
+      imageUrl = data["image"]; // Asigna la URL de la imagen desde el JSON.
+      infoAnimal = data["fact"]; // Asigna un hecho adicional sobre el animal desde el JSON.
     } catch (exception) {
       //print(exception);
     }

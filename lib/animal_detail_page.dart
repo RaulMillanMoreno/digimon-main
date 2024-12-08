@@ -138,7 +138,7 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
         children: <Widget>[
           animalImage,
           Text(widget.animal.name, style: const TextStyle(color: Colors.black, fontSize: 32.0)),
-          Text('${widget.animal.levelAnimal}', style: const TextStyle(color: Colors.black, fontSize: 20.0), textAlign: TextAlign.center,),
+          Text('${widget.animal.infoAnimal}', style: const TextStyle(color: Colors.black, fontSize: 20.0), textAlign: TextAlign.center,),
           Padding(
             padding: const EdgeInsets.only(top: 20.0),
             child: rating,

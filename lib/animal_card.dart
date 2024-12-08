@@ -62,7 +62,7 @@ class _AnimalCardState extends State<AnimalCard> {
   }
 
   void renderAnimalPic() async {
-    await animal.getDataUrl();
+    await animal.getDataAPI();
     if (mounted) {
       setState(() {
         renderUrl = animal.imageUrl;
